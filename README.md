@@ -66,7 +66,12 @@ Do the following function calls then show the result to the demonstrator.
 
 To show each element you might want to do something like this. You are not
 obliged to use the same keys with your data structure or variable name.
-1 printMap(myGalaxyDS[”map”])
-2 print myGalaxyDS[”ships”]
-3 print myGalaxyDS[”crew”]
-4 print myGalaxyDS[”crewCoords”]
+
+printMap(myGalaxyDS[”map”])
+
+print myGalaxyDS[”ships”]
+
+print myGalaxyDS[”crew”]
+
+print myGalaxyDS[”crewCoords”]
+

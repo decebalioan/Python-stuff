@@ -43,10 +43,15 @@ An example Galaxy Map where galaxies with coordinates (0,0), (4,4) and
 (1,0) are being explored would look like this.
 
 E 0 0 0 0
+
 E 0 0 0 0
+
 0 0 0 0 0
+
 0 0 0 0 0
+
 0 0 0 0 E
+
 
 Do the following function calls then show the result to the demonstrator.
 1. recruit(”Joe Cooper”,(1,1))

@@ -1,0 +1,39 @@
+myGalaxyDS = dict(map = [[0,0,0,0,0],
+     [0,0,0,0,0],
+     [0,0,0,0,0],
+     [0,0,0,0,0],
+     [0,0,0,0,0]],
+            ships=0,
+            crew=list(),
+            crewCords=dict())
+
+def recruit(name,coordinates):
+    myGalaxyDS["map"][coordinates[0]][coordinates[1]] = "E"
+    myGalaxyDS["ships"] += 1
+    myGalaxyDS["crew"].append(name)
+    myGalaxyDS["crewCords"].update({name:coordinates})
+
+def retire(name):
+    location = myGalaxyDS["crewCords"].get(name)
+    myGalaxyDS["map"][location[0]][location[1]] = "0"
+    del myGalaxyDS["crewCords"][name]
+    myGalaxyDS["ships"] -= 1
+    myGalaxyDS["crew"].remove(name)
+
+def printMap(map):
+    print('\n'.join(' '.join(str(cell) for cell in row) for row in map))
+
+recruit("Joe Cooper",(1,1))
+recruit("Amelia Brand",(1,2))
+recruit("Kevin Doyle",(1,3))
+recruit("Murph",(2,2))
+recruit("Tom Cooper",(3,1))
+recruit("John Brand",(3,2))
+recruit("Nikolai Romilly",(3,3))
+recruit("Donald Doe",(4,4))
+retire("Donald Doe")
+
+printMap(myGalaxyDS["map"])
+print (myGalaxyDS["ships"])
+print (myGalaxyDS["crew"])
+print (myGalaxyDS["crewCords"])

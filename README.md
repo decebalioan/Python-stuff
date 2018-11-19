@@ -68,7 +68,9 @@ To show each element you might want to do something like this. You are not
 obliged to use the same keys with your data structure or variable name.
 
 printMap(myGalaxyDS[”map”])
-print myGalaxyDS[”ships”]
-print myGalaxyDS[”crew”]
-print myGalaxyDS[”crewCoords”]
 
+print myGalaxyDS[”ships”]
+
+print myGalaxyDS[”crew”]
+
+print myGalaxyDS[”crewCoords”]

@@ -1,0 +1,81 @@
+import random
+
+def printGrid(grid):
+    print('\n'.join(' '.join(str(cell) for cell in row) for row in grid))
+
+grid = [['-'] * 6 for i in range(6)]
+items = ["S", "R", "C"]  # Sword - S (Value - 20); Robe - R (Value 30); Crown - * (100)
+store = 3
+valueItems = 0
+for i in range(5):
+    x = random.randrange(6)
+    y = random.randrange(6)
+    grid[x][y] = random.choice(items)
+Hero = 'H'
+empty = '-'
+x=0
+y=0
+grid[x][y] = Hero
+printGrid(grid)
+
+def moveHero():
+    global store, valueItems
+    while (store>0):
+        move = input("What is your next direction?")
+        if ((str(move)) in ('DOWN', 'LEFT', 'RIGHT', 'UP')):
+            playerMove(move)
+            continue
+        else:
+            print("Error! Choose between DOWN, LEFT, RIGHT, UP")
+            continue
+    else:
+        print("Final value of collected loot: " + str(valueItems))
+    return move
+
+def isItem(item):
+    global store, valueItems, empty, grid
+    if item == '-':
+        return item
+    if item == 'S':
+        item = empty
+        store -= 1
+        print("You have picked up a Sword (Value 20). You have " + str(store) + " inventory slots remaining.")
+        valueItems += 20
+        return item
+    elif item == 'C':
+        item = empty
+        store -= 1
+        print("You have picked up a Crown (Value 100). You have " + str(store) + " inventory slots remaining.")
+        valueItems += 100
+        return item
+    elif item == 'R':
+        item = empty
+        store -= 1
+        print("You have picked up a Robe (Value 30). You have " + str(store) + " inventory slots remaining.")
+        valueItems += 30
+        return item
+
+def playerMove(move):
+    global x,y,items,store
+    move = (str(move))
+    if (move == 'DOWN'):
+        grid[x+1][y] = isItem(grid[x+1][y])
+        grid[x][y], grid[x+1][y] = grid[x+1][y], grid[x][y]
+        x += 1
+        printGrid(grid)
+    elif (move == 'UP'):
+        grid[x - 1][y] = isItem(grid[x-1][y])
+        grid[x][y], grid[x-1][y] = grid[x-1][y], grid[x][y]
+        x -= 1
+        printGrid(grid)
+    elif (move == 'LEFT'):
+        grid[x][y - 1] = isItem(grid[x][y-1])
+        grid[x][y], grid[x][y-1] = grid[x][y-1], grid[x][y]
+        y -= 1
+        printGrid(grid)
+    elif (move == 'RIGHT'):
+        grid[x][y + 1] = isItem(grid[x][y+1])
+        grid[x][y], grid[x][y+1] = grid[x][y+1], grid[x][y]
+        y += 1
+        printGrid(grid)
+moveHero()

@@ -1,6 +1,7 @@
 # Python-stuff
 
-Hero_game:
+# Hero_game:
+
 Create a role playing game that will be played on a 6 × 6 grid.
 The grid will represent a map and the game hero will start at position (0,0).
 Also, upon starting 5 items will be randomly placed on unique positions on the grid.
